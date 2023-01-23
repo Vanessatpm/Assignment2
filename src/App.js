@@ -6,7 +6,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<StartupPage />} />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/translation" element={<TranslationPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
