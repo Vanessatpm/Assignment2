@@ -8,6 +8,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <header>
+          <h1>Lost in Translation</h1>
+        </header>
+
         <Routes>
           {/* <Route path="/login" element={<LoginPage />} /> */}
           <Route path="/" element={<TranslationPage />} />
