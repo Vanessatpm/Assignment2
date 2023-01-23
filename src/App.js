@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginPage from "./Components/Pages/LoginPage";
+// import LoginPage from "./Components/Pages/LoginPage";
 import TranslationPage from "./Components/Pages/TranslationPage";
 import ProfilePage from "./Components/Pages/ProfilePage";
 
@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
+          {/* <Route path="/login" element={<LoginPage />} /> */}
           <Route path="/" element={<TranslationPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
