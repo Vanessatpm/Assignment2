@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createHeaders } from "../../Api/index";
 
-const baseUrl = process.env.REACT_APP_API_URL;
-
 export const getUser = createAsyncThunk("user/getUser", async (username) => {
   const response = await fetch(`${baseUrl}?username=${username}`);
   if (response.ok) {
