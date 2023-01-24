@@ -16,15 +16,15 @@ export const getUsername = createAsyncThunk(
 );
 
 export const createUser = createAsyncThunk(
-  "user/setUsername",
+  "user/createUsername",
   async (username) => {
-    await client.post(
-      "https://youthful-woozy-meteorite.glitch.me/translations?", username={username}"
-    );
-    if (response.ok) {
-      const result = await response.json();
-      return result;
-    }
+    // await client.post(
+    //   "https://youthful-woozy-meteorite.glitch.me/translations?", username={username}"
+    // );
+    // if (response.ok) {
+    //   const result = await response.json();
+    //   return result;
+    // }
   }
 );
 
