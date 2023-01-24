@@ -1,30 +1,32 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createHeaders } from "../../Api/index";
 
-const apiKey = "noroffreact";
+const baseUrl = process.env.REACT_APP_API_URL;
 
-export const getUsername = createAsyncThunk(
-  "user/getUsername",
-  async (username) => {
-    const response = await fetch(
-      "https://youthful-woozy-meteorite.glitch.me/translations?username={username}"
-    );
-    if (response.ok) {
-      const result = await response.json();
-      return result;
-    }
+export const getUser = createAsyncThunk("user/getUser", async (username) => {
+  const response = await fetch(`${baseUrl}?username=${username}`);
+  if (response.ok) {
+    const result = await response.json();
+    return result; // array of users with this username.
   }
-);
+});
 
 export const createUser = createAsyncThunk(
   "user/createUser",
   async (username) => {
-    // await client.post(
-    //    "https://youthful-woozy-meteorite.glitch.me/translations?", username={username}"
-    //  );
-    //  if (response.ok) {
-    //    const result = await response.json();
-    //    return result;
-    //  }
+    const response = await fetch(`${baseUrl}`, {
+      method: "POST",
+      headers: createHeaders(),
+      body: JSON.stringyfy({
+        username: username,
+        translations: [],
+      }),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    }
   }
 );
 
@@ -35,7 +37,10 @@ export const userSlice = createSlice({
   },
 
   extraReducers: {
-    [getUsername.fulfilled]: (state, action) => {
+    [getUser.fulfilled]: (state, action) => {
+      state.username = action.payload;
+    },
+    [createUser.fulfilled]: (state, action) => {
       state.username = action.payload;
     },
   },
