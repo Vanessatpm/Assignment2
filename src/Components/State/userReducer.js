@@ -41,9 +41,6 @@ export const userSlice = createSlice({
     [getUser.fulfilled]: (state, action) => {
       state.username = action.payload;
     },
-    [createUser.fulfilled]: (state, action) => {
-      state.username = action.payload;
-    },
   },
 });
 
