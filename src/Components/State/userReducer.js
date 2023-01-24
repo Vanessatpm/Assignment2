@@ -15,11 +15,11 @@ export const getUsername = createAsyncThunk(
   }
 );
 
-export const setUsername = createAsyncThunk(
-  "user/getUsername",
+export const createUser = createAsyncThunk(
+  "user/setUsername",
   async (username) => {
-    const response = await fetch(
-      "https://youthful-woozy-meteorite.glitch.me/translations?username={username}"
+    await client.post(
+      "https://youthful-woozy-meteorite.glitch.me/translations?", username={username}"
     );
     if (response.ok) {
       const result = await response.json();
