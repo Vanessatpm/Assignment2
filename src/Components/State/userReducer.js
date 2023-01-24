@@ -16,15 +16,15 @@ export const getUsername = createAsyncThunk(
 );
 
 export const createUser = createAsyncThunk(
-  "user/createUsername",
+  "user/createUser",
   async (username) => {
     // await client.post(
-    //   "https://youthful-woozy-meteorite.glitch.me/translations?", username={username}"
-    // );
-    // if (response.ok) {
-    //   const result = await response.json();
-    //   return result;
-    // }
+    //    "https://youthful-woozy-meteorite.glitch.me/translations?", username={username}"
+    //  );
+    //  if (response.ok) {
+    //    const result = await response.json();
+    //    return result;
+    //  }
   }
 );
 
@@ -36,7 +36,7 @@ export const userSlice = createSlice({
 
   extraReducers: {
     [getUsername.fulfilled]: (state, action) => {
-      state.username = action.payload.username;
+      state.username = action.payload;
     },
   },
 });
