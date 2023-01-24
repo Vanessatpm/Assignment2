@@ -1,32 +1,28 @@
 import { useState } from "react";
+import { useDispatch, } from "react-redux";
+import { useNavigate } from "react-router";
+import { getUser } from "./State/userReducer";
 
 function LoginForm() {
-    const [username, setUsername] = useState("unknown")
-
+    const [localUsername, setLocalUsername] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
     function handleLoginBtn() {
-        const apiUrl = 'https://youthful-woozy-meteorite.glitch.me/translations'
-
-        fetch(`${apiUrl}?username=${username}`)
-            .then(response => response.json())
-            .then(results => {
-                //Logger ut resultatet for å se hva man får 
-                console.log(results)
-            })
-            .catch(error => {
-                //Logger ut error 
-                console.log(error)
-            })
+        dispatch(getUser(localUsername));
+        navigate("/");
     }
-    function updateUsername(event){
-        setUsername(event.target.value)
+    function updateLocalUsername(event){
+        setLocalUsername(event.target.value);
     }
 
     return(
         <>
-            <h4>{username}</h4>
-            <input type="text" onChange={updateUsername} />
-            <button onClick={handleLoginBtn}>Submit</button>
-        
+            <h4>{localUsername}</h4>
+            <form onSubmit={handleLoginBtn}>
+                <input type="text" onChange={updateLocalUsername} />
+                <button type="submit">Submit</button>
+            </form>
         </>
     )
 }

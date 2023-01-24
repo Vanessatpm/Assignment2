@@ -7,6 +7,7 @@ export const getUser = createAsyncThunk("user/getUser", async (username) => {
   const response = await fetch(`${baseUrl}?username=${username}`);
   if (response.ok) {
     const result = await response.json();
+    //TODO: if result is an empty array: createUser and return the result of that call; else return one of the users?
     return result; // array of users with this username.
   }
 });
