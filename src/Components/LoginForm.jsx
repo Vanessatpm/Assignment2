@@ -7,11 +7,13 @@ import { createHeaders } from "../Api/index.js";
 function LoginForm() {
   const apiUrl = process.env.REACT_APP_API_URL;
   const [localUsername, setLocalUsername] = useState("");
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function handleLoginBtn() {
     console.log("handleLoginbtn");
+    setLoading(true);
     fetch(`${apiUrl}?username=${localUsername}`)
       .then((response) => response.json())
       .then((users) => {
@@ -80,16 +82,19 @@ function LoginForm() {
   }
 
   return (
-    <form>
-      <input
-        type="text"
-        placeholder="Enter your username"
-        onChange={updateLocalUsername}
-      />
-      <button type="button" onClick={handleLoginBtn}>
-        Submit
-      </button>
-    </form>
+    <div>
+      <p>{loading && "Loading"}</p>
+      <form>
+        <input
+          type="text"
+          placeholder="Enter your username"
+          onChange={updateLocalUsername}
+        />
+        <button type="button" onClick={handleLoginBtn}>
+          Submit
+        </button>
+      </form>
+    </div>
   );
 }
 
