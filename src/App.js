@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./Components/Pages/LoginPage";
 import TranslationPage from "./Components/Pages/TranslationPage";
 import ProfilePage from "./Components/Pages/ProfilePage";
-import { useSelector } from "react-redux";
 
 function App() {
   return (
@@ -11,7 +10,6 @@ function App() {
       <div className="App">
         <header>
           <h1>Lost in Translation</h1>
-          <p>{useSelector((state) => state.user.username)}</p>
         </header>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
