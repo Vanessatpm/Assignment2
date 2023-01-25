@@ -22,6 +22,7 @@ function LoginForm() {
 
         if (users.length === 0) {
           // no user with that username
+          console.log("user does not exist");
           const user = createUser();
           console.log(user);
           dispatch(
@@ -32,6 +33,7 @@ function LoginForm() {
           );
         } else {
           // the user with that username is in the API
+          console.log("user exists");
           dispatch(
             setUser({
               username: users[0].username,
