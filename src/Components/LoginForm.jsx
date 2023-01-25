@@ -79,7 +79,11 @@ function LoginForm() {
     <div>
       <h4>{localUsername}</h4>
       <form>
-        <input type="text" onChange={updateLocalUsername} />
+        <input
+          type="text"
+          placeholder="Enter your username"
+          onChange={updateLocalUsername}
+        />
         <button type="button" onClick={handleLoginBtn}>
           Submit
         </button>
