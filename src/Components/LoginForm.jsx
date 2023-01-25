@@ -83,7 +83,7 @@ function LoginForm() {
 
   return (
     <div>
-      <p>{loading && "Loading"}</p>
+      <p>{loading && "Loading..."}</p>
       <form>
         <input
           type="text"
