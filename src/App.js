@@ -18,6 +18,9 @@ function App() {
           <li>
             <NavLink to="/profile">Profile</NavLink>
           </li>
+          <li>
+            <NavLink to="/login">Log in as another user</NavLink>
+          </li>
         </nav>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
