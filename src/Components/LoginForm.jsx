@@ -27,6 +27,7 @@ function LoginForm() {
           console.log(user);
           dispatch(
             setUser({
+              id: user.id,
               username: user.username,
               translations: user.translations,
             })
@@ -36,6 +37,7 @@ function LoginForm() {
           console.log("user exists");
           dispatch(
             setUser({
+              id: users[0].id,
               username: users[0].username,
               translations: users[0].translations,
             })
