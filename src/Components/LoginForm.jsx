@@ -1,43 +1,90 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
-import { getUser } from "./State/userReducer";
+import { useNavigate } from "react-router-dom";
+import { setUser } from "./State/userReducer";
+import { createHeaders } from "../Api/index.js";
 
 function LoginForm() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [localUsername, setLocalUsername] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function handleLoginBtn() {
-    const apiUrl = process.env.REACT_APP_API_URL;
+    console.log("handleLoginbtn");
     fetch(`${apiUrl}?username=${localUsername}`)
       .then((response) => response.json())
-      .then((results) => {
-        // array with users with the username
+      .then((users) => {
+        // array with users with the username (0 or one user)
+
         //Logger ut resultatet for å se hva man får
-        console.log(results);
-        //TODO: if result is an empty array: createUser and return the result of that call; else return one of the users?
-        //TODO: remove stuff from reducer
+        console.log(users);
+
+        if (users.length === 0) {
+          // no user with that username
+          const user = createUser();
+          console.log(user);
+          dispatch(
+            setUser({
+              username: user.username,
+              translations: user.translations,
+            })
+          );
+        } else {
+          // the user with that username is in the API
+          dispatch(
+            setUser({
+              username: users[0].username,
+              translations: users[0].translations,
+            })
+          );
+        }
+      })
+      .then(() => {
+        // navigate to translation page:
+        navigate("/");
       })
       .catch((error) => {
         //Logger ut error
         console.log(error);
       });
-    //dispatch(getUser(localUsername));
-    navigate("/");
+
+    function createUser() {
+      fetch(`${apiUrl}`, {
+        method: "POST",
+        headers: createHeaders(),
+        body: JSON.stringify({
+          username: localUsername,
+          translations: [],
+        }),
+      })
+        .then((response) => response.json())
+        .then((user) => {
+          //Logger ut resultatet for å se hva man får
+          console.log(user);
+          return user;
+        })
+        .catch((error) => {
+          //Logger ut error
+          console.log(error);
+        });
+    }
   }
+
   function updateLocalUsername(event) {
     setLocalUsername(event.target.value);
   }
 
   return (
-    <>
+    <div>
       <h4>{localUsername}</h4>
-      <form onSubmit={handleLoginBtn}>
+      <form>
         <input type="text" onChange={updateLocalUsername} />
-        <button type="submit">Submit</button>
+        <button type="button" onClick={handleLoginBtn}>
+          Submit
+        </button>
       </form>
-    </>
+    </div>
   );
 }
 
