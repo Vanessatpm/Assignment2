@@ -32,7 +32,7 @@ export const createUser = createAsyncThunk(
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    username: undefined,
+    username: undefined
   },
 
   extraReducers: {
