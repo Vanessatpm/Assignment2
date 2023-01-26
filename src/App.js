@@ -10,18 +10,19 @@ function App() {
       <div className="App">
         <header>
           <h1>Lost in Translation</h1>
+          <nav>
+            <li>
+              <NavLink to="/">Translation</NavLink>
+            </li>
+            <li>
+              <NavLink to="/profile">Profile</NavLink>
+            </li>
+            <li>
+              <NavLink to="/login">Log in as another user</NavLink>
+            </li>
+          </nav>
         </header>
-        <nav>
-          <li>
-            <NavLink to="/">Translation</NavLink>
-          </li>
-          <li>
-            <NavLink to="/profile">Profile</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Log in as another user</NavLink>
-          </li>
-        </nav>
+
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<TranslationPage />} />

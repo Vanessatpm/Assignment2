@@ -4,7 +4,7 @@ import withAuth from "../withAuth";
 function TranslationPage() {
   return (
     <div>
-      <h2>Translation page</h2>
+      <h1>Translation Page</h1>
       <TranslationForm />
     </div>
   );
