@@ -14,9 +14,12 @@ export const userSlice = createSlice({
       state.username = action.payload.username;
       state.translations = action.payload.translations;
     },
+    deleteTranslations: (state) => {
+      state.translations = [];
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, deleteTranslations } = userSlice.actions;
 
 export default userSlice.reducer;
