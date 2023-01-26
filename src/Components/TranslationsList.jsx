@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 function TranslationsList() {
   const translations = useSelector((state) => state.user.translations);
   const translationsList = translations.map((translation) => {
-    <div>{translation}</div>;
+    return <li>{translation}</li>;
   });
 
-  return <div>{translationsList}</div>;
+  return <ul>{translationsList}</ul>;
 }
 
 export default TranslationsList;
