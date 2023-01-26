@@ -1,11 +1,13 @@
+import TranslationForm from "../TranslationForm";
 import withAuth from "../withAuth";
 
 function TranslationPage() {
   return (
     <div>
-      <h1>Translation Page</h1>
+        <h2>Translation page</h2>
+        <TranslationForm />
     </div>
   );
 }
 
-export default withAuth(TranslationPage);
+export default TranslationPage;
