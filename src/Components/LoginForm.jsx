@@ -11,8 +11,8 @@ function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
   function handleLoginBtn() {
-    console.log("handleLoginbtn");
     setLoading(true);
     fetch(`${apiUrl}?username=${localUsername}`)
       .then((response) => response.json())

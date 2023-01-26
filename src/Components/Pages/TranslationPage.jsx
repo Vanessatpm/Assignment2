@@ -10,4 +10,4 @@ function TranslationPage() {
   );
 }
 
-export default TranslationPage;
+export default withAuth(TranslationPage);
