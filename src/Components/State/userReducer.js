@@ -36,7 +36,7 @@ export const userSlice = createSlice({
     },
     addTranslation: (state, action) => {
       state.translations.push(action.payload);
-    }
+    },
 
     deleteTranslations: (state) => {
       state.translations = [];
