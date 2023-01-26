@@ -1,11 +1,13 @@
 import withAuth from "../withAuth";
-import TranslationsForm from "../TranslationsForm";
+import TranslationsHistory from "../TranslationsHistory";
+import LogoutButton from "../LogoutButton";
 
 function ProfilePage() {
   return (
     <div>
       <h1>Profile Page</h1>
-      <TranslationsForm />
+      <TranslationsHistory />
+      <LogoutButton />
     </div>
   );
 }
