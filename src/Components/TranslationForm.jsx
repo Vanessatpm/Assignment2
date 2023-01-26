@@ -1,30 +1,24 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form"
 
-
-
 function TranslationForm(){
     const [translation, setTranslation] = useState();
-    const { 
-        register,
-        handleSubmit,
-        } = useForm();
+    const { register, handleSubmit } = useForm();
 
     const onSubmit = ({ translation }) => {
         const charArray = translation.split('').map((char, index) =>{
             if(char === " "){
-                return <span className="span_space">_________</span>
+                //Next word comes on the next line
+                return <br/>
             } else { 
                 const signChar = char.toLowerCase()
                 const imgPath = "/img/" + signChar + ".png"
-                console.log(imgPath)
                 return (
                     <img src={imgPath} alt={signChar} key={index + "-" + signChar} /> 
                     )
                 }
         });
-            setTranslation(charArray)
-            
+            setTranslation(charArray)        
             
     }
 
@@ -39,7 +33,7 @@ function TranslationForm(){
         </form>
 
         <h3>Text to Sign Language: </h3>
-        {translation && <p>{translation}</p>}
+        <p>{translation}</p>
 
         </>
 
