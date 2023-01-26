@@ -1,11 +1,11 @@
 import withAuth from "../withAuth";
-import TranslationsForm from "../TranslationsForm";
+import TranslationsHistory from "../TranslationsHistory";
 
 function ProfilePage() {
   return (
     <div>
       <h1>Profile Page</h1>
-      <TranslationsForm />
+      <TranslationsHistory />
     </div>
   );
 }
