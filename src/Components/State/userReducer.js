@@ -17,9 +17,14 @@ export const userSlice = createSlice({
     deleteTranslations: (state) => {
       state.translations = [];
     },
+    deleteUser: (state) => {
+      state.id = undefined;
+      state.username = undefined;
+      state.translations = [];
+    },
   },
 });
 
-export const { setUser, deleteTranslations } = userSlice.actions;
+export const { setUser, deleteTranslations, deleteUser } = userSlice.actions;
 
 export default userSlice.reducer;

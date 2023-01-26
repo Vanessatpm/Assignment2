@@ -4,10 +4,10 @@ import withAuth from "../withAuth";
 function TranslationPage() {
   return (
     <div>
-        <h2>Translation page</h2>
-        <TranslationForm />
+      <h2>Translation page</h2>
+      <TranslationForm />
     </div>
   );
 }
 
-export default TranslationPage;
+export default withAuth(TranslationPage);
