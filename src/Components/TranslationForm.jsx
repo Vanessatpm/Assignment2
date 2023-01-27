@@ -26,6 +26,7 @@ function TranslationForm(){
                     )
                 }
         });
+        setTranslation(charArray)
         dispatch(updateTranslationAsync(user))
     }
 
