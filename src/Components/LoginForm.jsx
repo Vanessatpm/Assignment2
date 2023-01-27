@@ -25,15 +25,7 @@ function LoginForm() {
         if (users.length === 0) {
           // no user with that username
           console.log("user does not exist");
-          const user = createUser();
-          console.log(user);
-          dispatch(
-            setUser({
-              id: user.id,
-              username: user.username,
-              translations: user.translations,
-            })
-          );
+          createUserAndPutItInState();
         } else {
           // the user with that username is in the API
           console.log("user exists");
@@ -55,7 +47,7 @@ function LoginForm() {
         console.log(error);
       });
 
-    function createUser() {
+    function createUserAndPutItInState() {
       fetch(`${apiUrl}`, {
         method: "POST",
         headers: createHeaders(),
@@ -68,7 +60,14 @@ function LoginForm() {
         .then((user) => {
           //Logger ut resultatet for å se hva man får
           console.log(user);
-          return user;
+          // put user in redux state:
+          dispatch(
+            setUser({
+              id: user.id,
+              username: user.username,
+              translations: user.translations,
+            })
+          );
         })
         .catch((error) => {
           //Logger ut error
