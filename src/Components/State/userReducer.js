@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 const apiKey = process.env.REACT_APP_API_KEY;
+
+//Uses redux to access the API
 export const updateTranslationAsync = createAsyncThunk('user/updateTranslationAsync', async (user) => {
   const response = await fetch(`${apiUrl}/${user.id}`, {
     method: "PATCH",
@@ -13,11 +15,6 @@ export const updateTranslationAsync = createAsyncThunk('user/updateTranslationAs
       translations: user.translations,
     }),
   });
-  console.log(user);
-
-  if (response.ok) {
-    console.log(user.translations + "   ser ut til at dette gikk?");
-  }
 });
 
 export const userSlice = createSlice({

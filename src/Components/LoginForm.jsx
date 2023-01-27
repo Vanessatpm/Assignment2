@@ -19,17 +19,11 @@ function LoginForm() {
       .then((response) => response.json())
       .then((users) => {
         // array with users with the username (0 or one user)
-
-        //Logger ut resultatet for å se hva man får
-        console.log(users);
-
         if (users.length === 0) {
-          // no user with that username
-          console.log("user does not exist");
+
           createUserAndPutItInState();
         } else {
           // the user with that username is in the API
-          console.log("user exists");
           dispatch(
             setUser({
               id: users[0].id,
@@ -44,7 +38,6 @@ function LoginForm() {
         navigate("/");
       })
       .catch((error) => {
-        //Logger ut error
         console.log(error);
       });
 
@@ -59,9 +52,7 @@ function LoginForm() {
       })
         .then((response) => response.json())
         .then((user) => {
-          //Logger ut resultatet for å se hva man får
-          console.log(user);
-          // put user in redux state:
+        // put user in redux state:
           dispatch(
             setUser({
               id: user.id,
@@ -71,8 +62,7 @@ function LoginForm() {
           );
         })
         .catch((error) => {
-          //Logger ut error
-          console.log(error);
+
         });
     }
   }
