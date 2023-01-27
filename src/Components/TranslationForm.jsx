@@ -10,12 +10,9 @@ function TranslationForm(){
     const user = useSelector((state) => state.user);
 
     const onSubmit = ({ translation }) => {
-        //TODO: Fix this so the state is updated. 
         //When the state is updated, call the api and update that.
-        
         dispatch(addTranslation(translation))
-        console.log(translation)
-        console.log(user.translation)
+        
         const charArray = translation.split('').map((char, index) =>{
             if(char === " "){
                 //Next word comes on the next line
@@ -28,11 +25,10 @@ function TranslationForm(){
                     )
                 }
         });
-        setTranslation(charArray)  
         dispatch(updateTranslationAsync(user))
+        setTranslation(charArray)  
+        
     }
-
-
 
     return (
 

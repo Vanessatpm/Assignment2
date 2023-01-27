@@ -7,6 +7,8 @@ function TranslationsList() {
   });
 
   return <ul>{translationsList}</ul>;
+
+
 }
 
 export default TranslationsList;
