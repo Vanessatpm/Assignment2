@@ -2,22 +2,22 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 const apiKey = process.env.REACT_APP_API_KEY;
-export const updateTranslationAsync = createAsyncThunk('', async (user) => {
+export const updateTranslationAsync = createAsyncThunk("", async (user) => {
   const response = await fetch(`${apiUrl}/${user.id}`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'X-API-Key': apiKey,
-      'Content-Type': 'application/json'
+      "X-API-Key": apiKey,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      translations: user.translations
-    })
-  })
-  console.log(user)
+      translations: user.translations,
+    }),
+  });
+  console.log(user);
 
-  if(response.ok){
-    console.log(user.translations + "   ser ut til at dette gikk?")
-  } 
+  if (response.ok) {
+    console.log(user.translations + "   ser ut til at dette gikk?");
+  }
 });
 
 export const userSlice = createSlice({
@@ -47,9 +47,9 @@ export const userSlice = createSlice({
       state.translations = [];
     },
   },
-  
 });
 
-export const { setUser, deleteTranslations, deleteUser } = userSlice.actions;
+export const { setUser, addTranslation, deleteTranslations, deleteUser } =
+  userSlice.actions;
 
 export default userSlice.reducer;
