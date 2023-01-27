@@ -4,18 +4,21 @@ const apiUrl = process.env.REACT_APP_API_URL;
 const apiKey = process.env.REACT_APP_API_KEY;
 
 //Uses redux to access the API
-export const updateTranslationAsync = createAsyncThunk('user/updateTranslationAsync', async (user) => {
-  const response = await fetch(`${apiUrl}/${user.id}`, {
-    method: "PATCH",
-    headers: {
-      "X-API-Key": apiKey,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      translations: user.translations,
-    }),
-  });
-});
+export const updateTranslationAsync = createAsyncThunk(
+  "user/updateTranslationAsync",
+  async (user) => {
+    await fetch(`${apiUrl}/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "X-API-Key": apiKey,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        translations: user.translations,
+      }),
+    });
+  }
+);
 
 export const userSlice = createSlice({
   name: "user",
