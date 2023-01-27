@@ -11,7 +11,6 @@ function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   function handleLoginBtn() {
     console.log("handleLoginbtn");
     setLoading(true);
@@ -20,7 +19,6 @@ function LoginForm() {
       .then((users) => {
         // array with users with the username (0 or one user)
         if (users.length === 0) {
-
           createUserAndPutItInState();
         } else {
           // the user with that username is in the API
@@ -42,6 +40,7 @@ function LoginForm() {
       });
 
     function createUserAndPutItInState() {
+      // create user in API
       fetch(`${apiUrl}`, {
         method: "POST",
         headers: createHeaders(),
@@ -52,7 +51,7 @@ function LoginForm() {
       })
         .then((response) => response.json())
         .then((user) => {
-        // put user in redux state:
+          // put user in redux state:
           dispatch(
             setUser({
               id: user.id,
@@ -62,7 +61,7 @@ function LoginForm() {
           );
         })
         .catch((error) => {
-
+          console.error(error);
         });
     }
   }

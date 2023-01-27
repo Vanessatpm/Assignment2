@@ -9,6 +9,7 @@ function TranslationsHistory() {
   const dispatch = useDispatch();
 
   function deleteTranslations() {
+    // delete translations from API
     fetch(`${apiUrl}/${userId}`, {
       method: "PATCH",
       headers: createHeaders(),
@@ -18,15 +19,12 @@ function TranslationsHistory() {
     })
       .then((response) => response.json())
       .then((result) => {
-        //Logger ut resultatet for å se hva man får
-        console.log(result);
         return result;
       })
-      //update redux state:
+      //update translations in redux state:
       .then(dispatch(deleteTranslationsFromState()))
       .catch((error) => {
-        //Logger ut error
-        console.log(error);
+        console.error(error);
       });
   }
   return (
