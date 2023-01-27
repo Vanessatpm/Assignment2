@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 const apiKey = process.env.REACT_APP_API_KEY;
-export const updateTranslationAsync = createAsyncThunk('', async (user) => {
+export const updateTranslationAsync = createAsyncThunk('user/updateTranslationAsync', async (user) => {
   const response = await fetch(`${apiUrl}/${user.id}`, {
     method: 'PATCH',
     headers: {
