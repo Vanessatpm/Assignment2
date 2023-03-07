@@ -1,6 +1,6 @@
 # Assignment2
 
-This is an app that translate the English language to American sign language.
+This is an app that translate from English language to American sign language.
 
 ## Usage
 You can use the website through this URL: https://assignment2-psi.vercel.app/login 
